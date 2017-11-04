@@ -6,6 +6,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+
 " Required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -26,6 +27,7 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'itchyny/lightline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'pangloss/vim-javascript'
+" Plugin 'ternjs/tern_for_vim'
 
 " potentially useful stuff below
 " Plugin 'mattn/gist-vim'
@@ -37,15 +39,51 @@ call vundle#end()
 filetype plugin indent on
 " Vundle config ends here
 
+" map leader
+let mapleader = ","
+
+
 "Basics
 syntax on
 set tabstop=4 shiftwidth=4 expandtab
-set visualbell
+set smarttab
 set nu
 set ruler
 set hlsearch
 set nobackup
 set showcmd
+
+" Files and backups
+set noswapfile
+
+" cursorline
+set cursorline
+
+" remove sounds on errors
+set noerrorbells
+set novisualbell
+
+" spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" tabs
+map <leader>l :tabnext<cr>
+map <leader>h :tabp<cr>
+map <leader>tn :tabnew<cr>
+map <leader>tc :tabclose<cr>
+
+
+" vimwiki 
+let wiki_1 = {}
+" default wiki
+let wiki_1.path = '~/vimwiki'
+
+" everything related to deep learning and machine learning goes here
+let wiki_2 = {}
+let wiki_2.path = '~/deeplearning'
+let wiki_2.nested_syntaxes = { 'python': 'python'}
+
+let g:vimwiki_list = [wiki_1, wiki_2]
 
 "tslime config, using defaults
 let g:tslime_always_current_session = 1
